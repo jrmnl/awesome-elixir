@@ -7,9 +7,6 @@
 # General application configuration
 use Mix.Config
 
-config :awesome_elixir,
-  ecto_repos: [AwesomeElixir.Repo]
-
 # Configures the endpoint
 config :awesome_elixir, AwesomeElixirWeb.Endpoint,
   url: [host: "localhost"],

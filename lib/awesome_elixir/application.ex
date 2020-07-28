@@ -7,8 +7,6 @@ defmodule AwesomeElixir.Application do
 
   def start(_type, _args) do
     children = [
-      # Start the Ecto repository
-      AwesomeElixir.Repo,
       # Start the Telemetry supervisor
       AwesomeElixirWeb.Telemetry,
       # Start the PubSub system

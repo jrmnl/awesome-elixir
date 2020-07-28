@@ -3,14 +3,14 @@ defmodule AwesomeElixir.Libraries do
 
   @readme_url "https://raw.githubusercontent.com/h4cc/awesome-elixir/master/README.md"
 
-  @spec get! :: [%{title: String.t(), link: String.t(), category: String.t()}]
+  @spec get! :: [%{title: String.t(), url: String.t(), category: String.t()}]
   def get!() do
     %{body: body} = HTTPoison.get!(@readme_url)
     parse_libraries(body)
   end
 
   @spec parse_libraries(String.t()) :: [
-          %{title: String.t(), link: String.t(), category: String.t()}
+          %{title: String.t(), url: String.t(), category: String.t()}
         ]
   def parse_libraries(readme) do
     {blocks, _links, _options} =
@@ -46,8 +46,8 @@ defmodule AwesomeElixir.Libraries do
       for lib_block <- libraries do
         %Block.ListItem{blocks: [text_block]} = lib_block
         %Block.Text{line: [lib_info]} = text_block
-        [_, title, link] = Regex.run(~r/\[(.+?)\]\((.+?)\)/, lib_info)
-        %{title: title, link: link, category: category}
+        [_, title, url] = Regex.run(~r/\[(.+?)\]\((.+?)\)/, lib_info)
+        %{title: title, url: url, category: category}
       end
 
     libs ++ extract_libraries(tail)

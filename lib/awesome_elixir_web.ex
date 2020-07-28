@@ -22,7 +22,6 @@ defmodule AwesomeElixirWeb do
       use Phoenix.Controller, namespace: AwesomeElixirWeb
 
       import Plug.Conn
-      import AwesomeElixirWeb.Gettext
       alias AwesomeElixirWeb.Router.Helpers, as: Routes
     end
   end
@@ -54,7 +53,6 @@ defmodule AwesomeElixirWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import AwesomeElixirWeb.Gettext
     end
   end
 
@@ -67,7 +65,6 @@ defmodule AwesomeElixirWeb do
       import Phoenix.View
 
       import AwesomeElixirWeb.ErrorHelpers
-      import AwesomeElixirWeb.Gettext
       alias AwesomeElixirWeb.Router.Helpers, as: Routes
     end
   end
